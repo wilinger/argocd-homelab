@@ -8,7 +8,7 @@ spec:
     server: 'https://kubernetes.default.svc'
   source:
     path: charts/harbor
-    repoURL: 'https://github.com/wilinger/argocd-zencluster.git'
+    repoURL: 'https://github.com/wilinger/argocd-homelab.git'
     targetRevision: HEAD
     helm:
       valueFiles:
