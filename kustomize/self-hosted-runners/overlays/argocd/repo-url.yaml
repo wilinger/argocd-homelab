@@ -3,6 +3,7 @@ apiVersion: actions.summerwind.dev/v1alpha1
 kind: RunnerDeployment
 metadata:
   name: runner-deployment-argocd
+  namespace: cicd
 spec:
   template:
     spec:

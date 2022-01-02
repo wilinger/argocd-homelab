@@ -12,6 +12,7 @@ patches:
       kind: RunnerDeployment
       metadata:
         name: runner-deployment-terraform
+        namespace: cicd
       spec:
         template:
           spec:
