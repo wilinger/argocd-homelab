@@ -10,7 +10,7 @@ spec:
     namespace: cicd
   project: default
   source:
-    path: kustomize/apps/
+    path: kustomize/
     repoURL: https://github.com/wilinger/argocd-homelab.git
     targetRevision: HEAD
   syncPolicy:
