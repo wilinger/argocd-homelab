@@ -4,5 +4,7 @@ kind: Kustomization
 resources:
 - ../../base
 
+nameSuffix: -terraform
+
 patches:
  - repo-url.yaml
