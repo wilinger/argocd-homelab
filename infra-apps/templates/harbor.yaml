@@ -4,7 +4,7 @@ metadata:
   name: harbor
 spec:
   destination:
-    namespace: argocd
+    namespace: cicd
     server: 'https://kubernetes.default.svc'
   source:
     path: charts/harbor
@@ -20,4 +20,5 @@ spec:
       prune: true
       selfHeal: true
       allowEmpty: true
-
+    syncOptions:
+      - CreateNamespace=true

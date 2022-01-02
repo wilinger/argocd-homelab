@@ -4,7 +4,7 @@ metadata:
   name: actions-runner-controller
 spec:
   destination:
-    namespace: argocd
+    namespace: cicd
     server: 'https://kubernetes.default.svc'
   source:
     path: charts/actions-runner-controller
@@ -19,3 +19,5 @@ spec:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
