@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: runner-deployment-ansible
+  name: runner-deployment-argocd
   namespace: cicd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -11,7 +11,7 @@ spec:
     namespace: cicd
   project: default
   source:
-    path: kustomize/self-hosted-runners/overlays/ansible
+    path: kustomize/self-hosted-runners/overlays/argocd
     repoURL: https://github.com/wilinger/argocd-homelab.git
     targetRevision: HEAD
   syncPolicy:

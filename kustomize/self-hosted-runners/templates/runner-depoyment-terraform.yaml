@@ -9,9 +9,9 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: cicd
-  project: infra-apps
+  project: default 
   source:
-    path: kustomize/overlays/terraform
+    path: kustomize/self-hosted-runners/overlays/terraform
     repoURL: https://github.com/wilinger/argocd-homelab.git
     targetRevision: HEAD
   syncPolicy:
