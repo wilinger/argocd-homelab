@@ -7,5 +7,5 @@ metadata:
 spec:
   template:
     spec:
-      repository: wilinger/argocd-zencluster
+      repository: wilinger/argocd-homelab
       image: willw0176/actions-self-hosted-runner:v1.0.1

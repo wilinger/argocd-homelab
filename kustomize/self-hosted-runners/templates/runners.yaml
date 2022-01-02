@@ -11,7 +11,7 @@ spec:
   project: default
   source:
     path: kustomize/self-hosted-runners/
-    repoURL: https://github.com/wilinger/argocd-zencluster.git
+    repoURL: https://github.com/wilinger/argocd-homelab.git
     targetRevision: HEAD
   syncPolicy:
     automated:

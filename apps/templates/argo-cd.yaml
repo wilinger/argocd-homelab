@@ -1,8 +1,8 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: infra-apps
-  finalizer:
+  name: argo-cd
+  finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
@@ -10,12 +10,11 @@ spec:
     namespace: argocd
   project: infra-apps
   source:
-    path: infra-apps/
+    path: charts/argo-cd
     repoURL: https://github.com/wilinger/argocd-homelab.git
     targetRevision: HEAD
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
+
