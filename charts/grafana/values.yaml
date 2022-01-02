@@ -1,0 +1,67 @@
+grafana:
+  initChownData:
+    enabled: false
+  securityContext:
+    runAsUser: 0
+    runAsGroup: 0
+    fsGroup: 0
+  service:
+    enabled: true
+    type: ClusterIP
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    annotations:
+      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+      nginx.ingress.kubernetes.io/ssl-redirect: "true" 
+    path: /
+    pathType: Prefix
+    hosts:
+      - grafana.zencluster.org
+  persistence:
+    type: pvc
+    enabled: true
+  livenessProbe:
+    httpGet:
+      path: /api/health
+      port: 3000
+    initialDelaySeconds: 10
+    timeoutSeconds: 30
+    failureThreshold: 10
+  datasources:
+    datasources.yaml:
+      apiVersion: 1
+      datasources:
+      - name: Prometheus
+        type: prometheus
+        url: https://prometheus.zencluster.org
+        access: server
+        isDefault: true
+  plugins:
+    - grafana-piechart-panel
+  dashboardProviders:
+    dashboardproviders.yaml:
+      apiVersion: 1
+      providers:
+      - name: 'default'
+        orgId: 1
+        folder: ''
+        type: file
+        disableDeletion: false
+        editable: true
+        options:
+          path: /var/lib/grafana/dashboards/default
+  dashboards:
+    default:
+      ingress-nginx:
+        gnetId: 9614
+        revision: 1
+        datasource: Prometheus
+      node-exporter-full:
+        gnetId: 1860
+        revision: 24
+        datasource: Prometheus
+      cluster-monitoring:
+        gnetId: 10000
+        revision: 1
+        datasource: Prometheus

@@ -1,0 +1,91 @@
+argo-cd:
+  installCRDs: false
+
+  dex:
+    enabled: false
+
+  server:
+    service:
+      type: ClusterIP
+    ingress:
+      enabled: true
+      ingressClassName: "nginx"
+      hosts:
+        - argocd.zencluster.org
+      annotations:
+        nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+        nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+      paths:
+        - /
+      pathType: Prefix
+    config:
+      url: https://argocd.zencluster.org
+      accounts.master: apiKey,login
+      accounts.gitsvc: apiKey,login
+      resource.customizations: |
+        admissionregistration.k8s.io/MutatingWebhookConfiguration:
+          ignoreDifferences: |
+            jqPathExpressions:
+            - '.webhooks[]?.clientConfig.caBundle'
+
+    rbacConfig:
+      policy.csv: |
+        p, role:cicd, applications, sync, */*, allow
+        p, role:cicd, applications, get, */*, allow
+        g, master, role:admin
+        g, gitsvc, role:cicd
+      policy.default: ''
+    repositories:
+      stable:
+        url: https://charts.helm.sh/stable
+        type: helm
+      argo-cd:
+        url: https://argoproj.github.io/argo-helm
+        type: helm
+  
+  repoServer:
+    serviceAccount:
+      create: true
+      name: argocd-repo-server
+    rbac:
+      - apiGroups:
+        - ""
+        resources:
+        - secrets
+        verbs:
+        - get
+    env:
+      - name: HELM_PLUGINS
+        value: /custom-tools/helm-plugins/
+      - name: HELM_SECRETS_SOPS_PATH
+        value: /custom-tools/sops
+      - name: HELM_SECRETS_KUBECTL_PATH
+        value: /custom-tools/kubectl
+    volumes:
+      - name: custom-tools
+        emptyDir: {}
+    volumeMounts:
+      - mountPath: /custom-tools
+        name: custom-tools
+
+    initContainers:
+      - name: download-tools
+        image: alpine:latest
+        command: [sh, -ec]
+        env:
+          - name: HELM_SECRETS_VERSION
+            value: "3.11.0"
+          - name: SOPS_VERSION
+            value: "3.7.1"
+          - name: KUBECTL_VERSION
+            value: "1.22.0"
+        args:
+          - |
+            mkdir -p /custom-tools/helm-plugins
+            wget -qO- https://github.com/jkroepke/helm-secrets/releases/download/v${HELM_SECRETS_VERSION}/helm-secrets.tar.gz | tar -C /custom-tools/helm-plugins -xzf-;
+            wget -qO /custom-tools/sops https://github.com/mozilla/sops/releases/download/v${SOPS_VERSION}/sops-v${SOPS_VERSION}.linux
+            wget -qO /custom-tools/kubectl https://dl.k8s.io/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl
+            chmod +x /custom-tools/*
+        volumeMounts:
+          - mountPath: /custom-tools
+            name: custom-tools

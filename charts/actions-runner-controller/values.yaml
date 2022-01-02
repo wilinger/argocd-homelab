@@ -1,0 +1,2 @@
+actions-runner-controller:
+  installCRDs: false

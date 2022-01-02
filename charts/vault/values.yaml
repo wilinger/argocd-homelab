@@ -1,0 +1,10 @@
+vault:
+  server:
+    ingress:
+      enabled: true
+      ingressClassName: "nginx"
+      pathType: Prefix
+      hosts:
+        - host: vault.zencluster.org
+  ui:
+    enabled: true

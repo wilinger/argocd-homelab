@@ -1,0 +1,14 @@
+harbor:
+  expose:
+    type: ingress
+    tls:
+      enabled: true
+      certSource: none
+    ingress:
+      hosts:
+        core: harbor.zencluster.org
+        notary: notary.zencluster.org
+  externalURL: https://harbor.zencluster.org
+  trivy:
+    enabled: true
+    

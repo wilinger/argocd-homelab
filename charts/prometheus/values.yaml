@@ -1,0 +1,39 @@
+prometheus:
+  alertmanager:
+    enabled: true
+    baseURL: "https://alertmanager.zencluster.org"
+    service:
+      type: ClusterIP
+    ingress:
+      enabled: true
+      ingressClassName: nginx
+      annotations:
+        nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+        nginx.ingress.kubernetes.io/ssl-redirect: "true"
+      hosts:
+        - alertmanager.zencluster.org
+      path: /
+      pathType: Prefix
+    persistentVolume:
+      enabled: true
+      accessModes:
+        - ReadWriteOnce
+  server:
+    enabled: true
+    baseURL: "https://prometheus.zencluster.org"
+    service:
+      type: ClusterIP
+    ingress:
+      enabled: true
+      ingressClassName: nginx
+      annotations:
+        nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+        nginx.ingress.kubernetes.io/ssl-redirect: "true"
+      hosts:
+        - prometheus.zencluster.org
+      path: /
+      pathType: Prefix
+    persistentVolume:
+      enabled: true
+      accessModes:
+        - ReadWriteOnce
