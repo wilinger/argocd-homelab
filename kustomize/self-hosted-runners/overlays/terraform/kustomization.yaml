@@ -7,4 +7,12 @@ resources:
 nameSuffix: -terraform
 
 patches:
- - repo-url.yaml
+  - patch: |-
+      apiVersion: actions.summerwind.dev/v1alpha1
+      kind: RunnerDeployment
+      metadata:
+        name: runner-deployment-terraform
+      spec:
+        template:
+          spec:
+            repository: wilinger/terraform-homelab
