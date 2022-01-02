@@ -1,0 +1,11 @@
+---
+apiVersion: actions.summerwind.dev/v1alpha1
+kind: RunnerDeployment
+metadata:
+  name: runner-deployment
+  namespace: cicd
+spec:
+  template:
+    spec:
+      repository: wilinger/argocd-homelab
+      image: willw0176/actions-self-hosted-runner:v1.0.1
