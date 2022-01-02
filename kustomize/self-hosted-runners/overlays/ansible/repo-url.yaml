@@ -1,0 +1,7 @@
+---
+apiVersion: actions.summerwind.dev/v1alpha1
+kind: RunnerDeployment
+spec:
+  template:
+    spec:
+      repository: wilinger/ansible-homelab
