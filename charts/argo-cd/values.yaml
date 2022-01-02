@@ -1,5 +1,5 @@
 argo-cd:
-  installCRDs: false
+  #installCRDs: false
 
   dex:
     enabled: false
