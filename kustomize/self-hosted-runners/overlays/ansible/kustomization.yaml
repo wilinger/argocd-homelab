@@ -7,4 +7,13 @@ resources:
 nameSuffix: -ansible
 
 patches:
- - repo-url.yaml
+  - patch: |-
+      apiVersion: actions.summerwind.dev/v1alpha1
+      kind: RunnerDeployment
+      metadata:
+        name: runner-deployment
+        namespace: cicd
+      spec:
+        template:
+          spec:
+            repository: wilinger/ansible-homelab

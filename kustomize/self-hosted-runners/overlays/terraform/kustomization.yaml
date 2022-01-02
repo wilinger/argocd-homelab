@@ -11,7 +11,7 @@ patches:
       apiVersion: actions.summerwind.dev/v1alpha1
       kind: RunnerDeployment
       metadata:
-        name: runner-deployment-terraform
+        name: runner-deployment
         namespace: cicd
       spec:
         template:
