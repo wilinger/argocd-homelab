@@ -39,7 +39,7 @@ jobs:
         secrets: kv-v2/data/secret/argocd _jwt | ARGOCD_TOKEN
 
     - name: Sync Helm Applications
-      if: steps.filter.outputs.helm == 'true'
+      if: steps.filters.outputs.helm == 'true'
       run: |
         argocd app sync -l argocd.argoproj.io/instance=infra-apps
         argocd app wait -l argocd.argoproj.io/instance=infra-apps
