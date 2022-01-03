@@ -1,0 +1,60 @@
+name: Deploy to ArgoCD
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    name: 'ArgoCD'
+    runs-on: self-hosted
+
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+    - uses: dorny/paths-filter@v2
+      id: filters
+      with:
+        filters: |
+          helm:
+            - 'apps/**'
+            - 'charts/**'
+          kustomize:
+            - 'kustomize/**'
+
+    - name: Import Vault secrets
+      id: secrets
+      uses: hashicorp/vault-action@v2.3.1
+      with:
+        url: ${{ secrets.VAULT_ADDR }}
+        method: approle
+        roleId: ${{ secrets.VAULT_ROLE_ID }}
+        secretId: ${{ secrets.VAULT_SECRET_ID }}
+        exportToken: true
+        secrets: kv-v2/data/secret/argocd _jwt | ARGOCD_TOKEN
+
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Sync Helm Applications
+      if: steps.filter.outputs.helm == 'true'
+      run: |
+        argocd app sync -l argocd.argoproj.io/instance=infra-apps
+        argocd app wait -l argocd.argoproj.io/instance=infra-apps
+      env:
+        ARGOCD_SERVER: ${{ secrets.ARGOCD_ADDR }}
+        ARGOCD_AUTH_TOKEN: '${{ steps.secrets.outputs.ARGOCD_TOKEN }}'
+    
+    # - name: Sync Kustomize Applications
+    #   if: steps.filter.outputs.kustomize == 'true'
+    #   run: |
+    #     argocd app sync -l argocd.argoproj.io/instance=runners
+    #     argocd app wait -l argocd.argoproj.io/instance=runners
+    #   env:
+    #     ARGOCD_SERVER: ${{ secrets.ARGOCD_ADDR }}
+    #     ARGOCD_AUTH_TOKEN: '${{ steps.secrets.outputs.ARGOCD_TOKEN }}'
+
+
+
