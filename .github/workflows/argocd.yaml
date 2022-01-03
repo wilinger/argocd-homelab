@@ -5,7 +5,7 @@ on:
     branches: [ main ]
 
 jobs:
-  argocd:
+  deploy:
     name: 'ArgoCD'
     runs-on: self-hosted
 
@@ -13,10 +13,10 @@ jobs:
       run:
         shell: bash
 
+    steps:
     - name: Checkout
       uses: actions/checkout@v2
     
-    steps:
     - uses: dorny/paths-filter@v2
       id: filters
       with:
