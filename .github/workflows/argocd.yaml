@@ -5,7 +5,7 @@ on:
     branches: [ main ]
 
 jobs:
-  deploy:
+  argocd:
     name: 'ArgoCD'
     runs-on: self-hosted
 
