@@ -13,6 +13,9 @@ jobs:
       run:
         shell: bash
 
+    - name: Checkout
+      uses: actions/checkout@v2
+    
     steps:
     - uses: dorny/paths-filter@v2
       id: filters
@@ -34,9 +37,6 @@ jobs:
         secretId: ${{ secrets.VAULT_SECRET_ID }}
         exportToken: true
         secrets: kv-v2/data/secret/argocd _jwt | ARGOCD_TOKEN
-
-    - name: Checkout
-      uses: actions/checkout@v2
 
     - name: Sync Helm Applications
       if: steps.filter.outputs.helm == 'true'
