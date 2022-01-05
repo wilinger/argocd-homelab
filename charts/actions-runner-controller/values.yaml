@@ -56,14 +56,14 @@ actions-runner-controller:
         # kubernetes.io/tls-acme: "true"
       hosts:
         - host: githooks.zencluster.org
-          paths:
-          - path: /*
-            pathType: Prefix
-            backend:
-              service:
-                name: ssl-redirect
-                port:
-                  name: use-annotation
+          # paths:
+          # - path: /*
+          #   pathType: Prefix
+          #   backend:
+          #     service:
+          #       name: ssl-redirect
+          #       port:
+          #         name: use-annotation
       tls: []
       #  - secretName: chart-example-tls
       #    hosts:
