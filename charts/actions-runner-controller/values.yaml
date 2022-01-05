@@ -45,8 +45,16 @@ actions-runner-controller:
         # kubernetes.io/tls-acme: "true"
       # path: /
       # pathType: Prefix
+      ingressClassName: nginx
+      annotations:
+        nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+        nginx.ingress.kubernetes.io/ssl-redirect: "true" 
+      path: /
+      pathType: Prefix
+
       hosts:
         - host: githooks.zencluster.org
+          #paths: []
           # paths:
           # - path: /*
           #   pathType: Prefix
