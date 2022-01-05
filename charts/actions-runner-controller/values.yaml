@@ -43,12 +43,12 @@ actions-runner-controller:
       service:
         type: ClusterIP
         annotations: {}
-        ports:
-          - port: 80
-            targetPort: http
-            protocol: TCP
-            name: http
-            #nodePort: someFixedPortForUseWithTerraformCdkCfnEtc
+        # ports:
+        #   - port: 80
+        #     targetPort: http
+        #     protocol: TCP
+        #     name: http
+        #     #nodePort: someFixedPortForUseWithTerraformCdkCfnEtc
       ingress:
         enabled: true
         annotations:
