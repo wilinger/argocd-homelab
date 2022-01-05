@@ -57,13 +57,13 @@ actions-runner-controller:
         hosts:
           - host: githooks.zencluster.org
             paths:
-            - path: /*
-              pathType: Prefix
-              backend:
-                service:
-                  name: ssl-redirect
-                  port:
-                    name: use-annotation
+              - path: /*
+                pathType: Prefix
+                backend:
+                  service:
+                    name: ssl-redirect
+                    port:
+                      name: use-annotation
         tls: []
         #  - secretName: chart-example-tls
         #    hosts:
