@@ -1,4 +1,15 @@
 actions-runner-controller:
+  service:
+    type: ClusterIP
+    port: 443
+    annotations: {}
+  resources:
+    limits:
+      cpu: 100m
+      memory: 128Mi
+    requests:
+      cpu: 100m
+      memory: 128Mi
   githubWebhookServer:
     enabled: true
       replicaCount: 1
