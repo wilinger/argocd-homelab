@@ -27,6 +27,7 @@ patches:
       kind: HorizontalRunnerAutoscaler
       metadata:
         name: autoscaler-ansible
+        namespace: cicd
       spec:
         scaleTargetRef:
           name: runner-deployment-terraform
