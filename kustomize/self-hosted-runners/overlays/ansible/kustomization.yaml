@@ -5,7 +5,7 @@ resources:
 - ../../base
 
 nameSuffix: -ansible
-# namespace: cicd
+namespace: cicd
 
 # patchesStrategicMerge:
 #   - deployment_autoscaler.yaml
