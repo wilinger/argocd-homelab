@@ -1,5 +1,6 @@
 resources:
-  - deployment.yaml
+  - runner-deployment.yaml
+  - autoscaler-deployment.yaml
 
 commonLabels:
   app: runner
