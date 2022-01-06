@@ -9,3 +9,19 @@ spec:
     spec:
       repository: wilinger/argocd-homelab
       image: willw0176/actions-self-hosted-runner:v1.0.1
+      # env:
+      #   - name: RUNNER_FEATURE_FLAG_EPHEMERAL
+      #     value: "true"
+---
+apiVersion: actions.summerwind.dev/v1alpha1
+kind: HorizontalRunnerAutoscaler
+spec:
+  scaleTargetRef:
+    name: runner-deployment
+  minReplicas: 0
+  maxReplicas: 1
+  scaleUpTriggers:
+  - githubEvent:
+      push:
+    amount: 1
+    duration: "5m"
