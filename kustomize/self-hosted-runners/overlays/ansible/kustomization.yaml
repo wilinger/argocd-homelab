@@ -25,4 +25,4 @@ patches:
         namespace: cicd
       spec:
         scaleTargetRef:
-          name: runner-deployment-ansible
+          name: runner-deployment

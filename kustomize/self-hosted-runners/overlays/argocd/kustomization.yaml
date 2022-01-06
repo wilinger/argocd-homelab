@@ -25,4 +25,4 @@ patches:
         namespace: cicd
       spec:
         scaleTargetRef:
-          name: runner-deployment-argocd
+          name: runner-deployment
