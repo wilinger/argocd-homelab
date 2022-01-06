@@ -17,7 +17,7 @@ apiVersion: actions.summerwind.dev/v1alpha1
 kind: HorizontalRunnerAutoscaler
 metadata:
   name: autoscaler
-  nammespace: autoscaler
+  # nammespace: autoscaler
 spec:
   scaleTargetRef:
     name: runner-deployment
