@@ -21,7 +21,7 @@ patches:
       apiVersion: actions.summerwind.dev/v1alpha1
       kind: HorizontalRunnerAutoscaler
       metadata:
-        name: autoscaler-argocd
+        name: autoscaler
         namespace: cicd
       spec:
         scaleTargetRef:
