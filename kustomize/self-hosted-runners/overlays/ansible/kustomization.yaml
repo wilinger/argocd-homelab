@@ -7,9 +7,16 @@ resources:
 nameSuffix: -ansible
 namespace: cicd
 
-patchesStrategicMerge:
-  - deployment_autoscaler.yaml
-  - deployment_runner.yaml
+patches:
+- path: deployment_autoscaler.yaml
+  target:
+    kind: HorizontalRunnerAutoscaler
+    name: autoscaler-ansible
+    namespace: cicd
+
+# patchesStrategicMerge:
+#   - deployment_autoscaler.yaml
+#   - deployment_runner.yaml
 
 # patches:
 #   - patch: |-
