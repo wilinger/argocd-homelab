@@ -11,8 +11,17 @@ patches:
 - path: deployment_autoscaler.yaml
   target:
     kind: HorizontalRunnerAutoscaler
-    name: autoscaler-ansible
+    name: autoscaler
     namespace: cicd
+  options:
+    allowNameChange: true
+- path: deployment_runner.yaml
+  target:
+    kind: RunnerDeployment
+    name: runner-deployment
+    namespace: cicd
+  options:
+    allowNameChange: true
 
 # patchesStrategicMerge:
 #   - deployment_autoscaler.yaml
