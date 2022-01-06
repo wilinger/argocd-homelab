@@ -40,4 +40,4 @@ patches:
       spec:
         template:
           spec:
-            repository: wilinger/ansible-homelab
+            repository: wilinger/argocd-homelab

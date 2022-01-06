@@ -40,5 +40,5 @@ patches:
       spec:
         template:
           spec:
-            repository: wilinger/ansible-homelab
+            repository: wilinger/terraform-homelab
 
