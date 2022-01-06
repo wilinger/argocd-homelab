@@ -36,6 +36,7 @@ patches:
       kind: RunnerDeployment
       metadata:
         name: runner-deployment
+        namespace: cicd
       spec:
         template:
           spec:
