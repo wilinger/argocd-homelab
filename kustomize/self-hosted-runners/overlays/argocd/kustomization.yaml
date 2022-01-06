@@ -17,3 +17,12 @@ patches:
         template:
           spec:
             repository: wilinger/argocd-homelab
+  - patch: |-
+      apiVersion: actions.summerwind.dev/v1alpha1
+      kind: HorizontalRunnerAutoscaler
+      metadata:
+        name: autoscaler
+        namespace: cicd
+      spec:
+        scaleTargetRef:
+          name: runner-deployment-argocd

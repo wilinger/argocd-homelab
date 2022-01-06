@@ -1,5 +1,5 @@
 resources:
-  - runner-deployment.yaml
+  - deployment.yaml
 
 commonLabels:
   app: runner

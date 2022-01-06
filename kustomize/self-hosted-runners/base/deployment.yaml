@@ -9,9 +9,9 @@ spec:
     spec:
       repository: wilinger/argocd-homelab
       image: willw0176/actions-self-hosted-runner:v1.0.1
-      # env:
-      #   - name: RUNNER_FEATURE_FLAG_EPHEMERAL
-      #     value: "true"
+      env:
+        - name: RUNNER_FEATURE_FLAG_EPHEMERAL
+          value: "true"
 ---
 apiVersion: actions.summerwind.dev/v1alpha1
 kind: HorizontalRunnerAutoscaler
