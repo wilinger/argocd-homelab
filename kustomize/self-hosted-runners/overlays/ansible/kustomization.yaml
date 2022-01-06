@@ -7,28 +7,28 @@ resources:
 nameSuffix: -ansible
 namespace: cicd
 
-# patchesStrategicMerge:
-#   - deployment_autoscaler.yaml
-#   - deployment_runner.yaml
+patchesStrategicMerge:
+  - deployment_autoscaler.yaml
+  - deployment_runner.yaml
 
-patches:
-  - patch: |-
-      apiVersion: actions.summerwind.dev/v1alpha1
-      kind: HorizontalRunnerAutoscaler
-      metadata:
-        name: autoscaler-ansible
-        namespace: cicd
-      spec:
-        scaleTargetRef:
-          name: runner-deployment-terraform
-  - patch: |-
-      apiVersion: actions.summerwind.dev/v1alpha1
-      kind: RunnerDeployment
-      metadata:
-        name: runner-deployment
-        namespace: cicd
-      spec:
-        template:
-          spec:
-            repository: wilinger/ansible-homelab
+# patches:
+#   - patch: |-
+#       apiVersion: actions.summerwind.dev/v1alpha1
+#       kind: HorizontalRunnerAutoscaler
+#       metadata:
+#         name: autoscaler-ansible
+#         namespace: cicd
+#       spec:
+#         scaleTargetRef:
+#           name: runner-deployment-terraform
+#   - patch: |-
+#       apiVersion: actions.summerwind.dev/v1alpha1
+#       kind: RunnerDeployment
+#       metadata:
+#         name: runner-deployment
+#         namespace: cicd
+#       spec:
+#         template:
+#           spec:
+#             repository: wilinger/ansible-homelab
 

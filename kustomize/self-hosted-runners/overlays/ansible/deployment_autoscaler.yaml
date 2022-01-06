@@ -2,7 +2,7 @@ apiVersion: actions.summerwind.dev/v1alpha1
 kind: HorizontalRunnerAutoscaler
 metadata:
   name: autoscaler-ansible
-  # namespace: cicd
+  namespace: cicd
 spec:
   scaleTargetRef:
     name: runner-deployment-ansible
