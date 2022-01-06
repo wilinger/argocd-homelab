@@ -7,6 +7,7 @@ resources:
 nameSuffix: -ansible
 namespace: cicd
 
+### working###
 patches:
 - path: deployment_autoscaler.yaml
   target:
@@ -20,10 +21,6 @@ patches:
     name: runner-deployment
   options:
     allowNameChange: true
-
-# patchesStrategicMerge:
-#   - deployment_autoscaler.yaml
-#   - deployment_runner.yaml
 
 # patches:
 #   - patch: |-
