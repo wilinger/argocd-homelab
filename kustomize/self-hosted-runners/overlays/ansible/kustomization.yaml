@@ -25,4 +25,4 @@ patches:
         namespace: cicd
       spec:
         scaleTargetRef:
-          name: runner-deployment
+          name: runner-deployment-terraform

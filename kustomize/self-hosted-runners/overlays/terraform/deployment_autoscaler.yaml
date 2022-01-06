@@ -1,0 +1,8 @@
+apiVersion: actions.summerwind.dev/v1alpha1
+kind: HorizontalRunnerAutoscaler
+metadata:
+  name: autoscaler-terraform
+  namespace: cicd
+spec:
+  scaleTargetRef:
+    name: runner-deployment-terraform
