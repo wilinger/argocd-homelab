@@ -17,7 +17,7 @@ apiVersion: actions.summerwind.dev/v1alpha1
 kind: HorizontalRunnerAutoscaler
 metadata:
   name: autoscaler
-  nammespace: cicd
+  # nammespace: cicd
 spec:
   scaleTargetRef:
     name: runner-deployment
