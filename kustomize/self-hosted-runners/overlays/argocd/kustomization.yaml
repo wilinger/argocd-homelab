@@ -5,32 +5,38 @@ resources:
 - ../../base
 
 nameSuffix: -argocd
+namespace: cicd
 
+### working###
 # patches:
 # - path: deployment_autoscaler.yaml
 #   target:
 #     kind: HorizontalRunnerAutoscaler
-#     name: autoscaler-ansible
-#     namespace: cicd
-  # - deployment_runner.yaml
+#     name: autoscaler
+#   options:
+#     allowNameChange: true
+# - path: deployment_runner.yaml
+#   target:
+#     kind: RunnerDeployment
+#     name: runner-deployment
+#   options:
+#     allowNameChange: true
 
-# patches:
-#   - patch: |-
-#       apiVersion: actions.summerwind.dev/v1alpha1
-#       kind: RunnerDeployment
-#       metadata:
-#         name: runner-deployment
-#         namespace: cicd
-#       spec:
-#         template:
-#           spec:
-#             repository: wilinger/argocd-homelab
-#   - patch: |-
-#       apiVersion: actions.summerwind.dev/v1alpha1
-#       kind: HorizontalRunnerAutoscaler
-#       metadata:
-#         name: autoscaler-ansible
-#         namespace: cicd
-#       spec:
-#         scaleTargetRef:
-#           name: runner-deployment-argocd
+patches:
+  - patch: |-
+      apiVersion: actions.summerwind.dev/v1alpha1
+      kind: HorizontalRunnerAutoscaler
+      metadata:
+        name: autoscaler
+      spec:
+        scaleTargetRef:
+          name: runner-deployment-argocd
+  - patch: |-
+      apiVersion: actions.summerwind.dev/v1alpha1
+      kind: RunnerDeployment
+      metadata:
+        name: runner-deployment
+      spec:
+        template:
+          spec:
+            repository: wilinger/ansible-homelab
