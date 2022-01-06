@@ -1,5 +1,7 @@
 resources:
   - deployment.yaml
 
+namespace: cicd
+
 commonLabels:
   app: runner
