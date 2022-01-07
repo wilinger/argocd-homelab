@@ -1,0 +1,7 @@
+apiVersion: actions.summerwind.dev/v1alpha1
+kind: HorizontalRunnerAutoscaler
+metadata:
+  name: autoscaler
+spec:
+  scaleTargetRef:
+    name: runner-deployment-bpmdb
