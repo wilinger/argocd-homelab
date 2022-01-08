@@ -11,7 +11,7 @@ spec:
   project: default 
   source:
     path: kustomize/self-hosted-runners/overlays/bpmdb
-    repoURL: https://github.com/wilinger/old_bpmdb.git
+    repoURL: https://github.com/wilinger/argocd-homelab.git
     targetRevision: HEAD
   syncPolicy:
     automated:
