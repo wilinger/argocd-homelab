@@ -44,10 +44,44 @@ argo-cd:
       argo-cd:
         url: https://argoproj.github.io/argo-helm
         type: helm
-      hashicorp:
-        url: https://argoproj.github.io/argo-helm
+      metallb:
+        url: https://metallb.github.io/metallb
         type: helm
-  
+      nfs-subdir-external-provisioner:
+        url: https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner
+        type: helm
+      jetstack:
+        url: https://charts.jetstack.io
+        type: helm
+      hashicorp:
+        url: https://helm.releases.hashicorp.com
+        type: helm
+      cloudflare:
+        url: https://cloudflare.github.io/helm-charts
+        type: helm
+      sealed-secrets:
+        url: https://bitnami-labs.github.io/sealed-secrets
+        type: helm
+      appscode:
+        url: https://charts.appscode.com/stable
+        type: helm
+      actions-runner-controller:
+        url: https://actions-runner-controller.github.io/actions-runner-controller
+        type: helm
+      prometheus-community:
+        url: https://prometheus-community.github.io/helm-charts
+        type: helm
+      grafana:
+        url: https://grafana.github.io/helm-charts
+        type: helm
+      harbor:
+        url: https://helm.goharbor.io
+        type: helm
+      sonarqube:
+        url: https://sonarsource.github.io/helm-chart-sonarqube
+        type: helm
+
+
   repoServer:
     serviceAccount:
       create: true
