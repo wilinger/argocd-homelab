@@ -18,7 +18,6 @@ argo-cd:
       paths:
         - /
       pathType: Prefix
-      https: false
     extraArgs:
       - --insecure
     config:
