@@ -42,6 +42,9 @@ argo-cd:
       argo-cd:
         url: https://argoproj.github.io/argo-helm
         type: helm
+      hashicorp:
+        url: https://helm.releases.hashicorp.com
+        type: helm
   
   repoServer:
     serviceAccount:
