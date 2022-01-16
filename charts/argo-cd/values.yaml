@@ -19,6 +19,8 @@ argo-cd:
         - /
       pathType: Prefix
       https: false
+    extraArgs:
+      - --insecure
     config:
       url: https://argocd.zencluster.org
       accounts.master: apiKey,login
