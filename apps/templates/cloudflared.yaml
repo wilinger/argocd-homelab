@@ -7,7 +7,7 @@ spec:
     namespace: cicd
     server: 'https://kubernetes.default.svc'
   source:
-    path: manifests/cloudflared
+    path: kustomize/cloudflared
     repoURL: 'https://github.com/wilinger/argocd-homelab.git'
     targetRevision: HEAD
   project: default 

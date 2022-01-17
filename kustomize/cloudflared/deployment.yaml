@@ -34,27 +34,5 @@ spec:
                 name: argo-tunnel-credentials
             - secret:
                 name: argo-tunnel-cert
-            - configMap:
-                name: cloudflared
-                items:
-                  - key: config.yaml
-                    path: config.yaml
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: cloudflared
-  namespace: cicd
-data:
-  config.yaml: |
-    tunnel: zencluster
-    credentials-file: /etc/cloudflared/credentials.json
-    no-autoupdate: true
-    ingress:
-      - hostname: argocd-ext.zencluster.org
-        service: https://argocd.zencluster.org
-      - hostname: githooks.zencluster.org
-        service: http://actions-runner-controller-webhook.cicd.svc.cluster.local:80
-      - hostname: sq.zencluster.org
-        service: https://sq.zencluster.org
-      - service: http_status:404
+            - secret:
+                name: argo-tunnel-config
