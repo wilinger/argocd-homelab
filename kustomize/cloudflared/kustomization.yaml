@@ -3,20 +3,9 @@ kind: Kustomization
 
 namespace: cicd
 
-resources:
-  - deployment.yaml
-  - sealed-secrets/sealed-secret-credentials.yaml
-  - sealed-secrets/sealed-secret-cert.yaml
-  - sealed-secrets/sealed-secret-config.yaml
-
 configurations:
   - configurations/sealed-secret-config.yaml
 
-generatorOptions:
-  annotations:
-    sealedsecrets.bitnami.com/managed: "true"
-    sealedsecrets.bitnami.com/namespace-wide: "true"
-    
 secretGenerator:
   - name: argo-tunnel-credentials
     type: Opaque
@@ -31,3 +20,15 @@ secretGenerator:
     type: Opaque
     # files:
     # - secrets/config.yml
+
+generatorOptions:
+  annotations:
+    sealedsecrets.bitnami.com/managed: "true"
+    sealedsecrets.bitnami.com/namespace-wide: "true"
+
+resources:
+  - sealed-secrets/sealed-secret-credentials.yaml
+  - sealed-secrets/sealed-secret-cert.yaml
+  - sealed-secrets/sealed-secret-config.yaml
+  - deployment.yaml
+
