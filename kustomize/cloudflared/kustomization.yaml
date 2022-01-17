@@ -9,6 +9,7 @@ resources:
   - sealed-secrets/sealed-secret-cert.yaml
   - sealed-secrets/sealed-secret-config.yaml
 
+## https://github.com/argoproj/argo-cd/issues/1639
 secretGenerator:
   - name: argo-tunnel-credentials
     type: Opaque
