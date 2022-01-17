@@ -5,9 +5,9 @@ namespace: cicd
 
 resources:
   - deployment.yaml
-  - sealed-secrets/sealed-secert-credentials.yaml
-  - sealed-secrets/sealed-secert-cert.yaml
-  - sealed-secrets/sealed-secert-config.yaml
+  - sealed-secrets/sealed-secret-credentials.yaml
+  - sealed-secrets/sealed-secret-cert.yaml
+  - sealed-secrets/sealed-secret-config.yaml
 
 configurations:
   - configurations/sealed-secret-config.yaml
