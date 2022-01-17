@@ -9,27 +9,25 @@ resources:
   - sealed-secrets/sealed-secret-config.yaml
   - deployment.yaml
 
-# configurations:
-#   - configurations/sealed-secret-config.yaml
+secretGenerator:
+  - name: argo-tunnel-credentials
+    type: Opaque
+    ## kustomize build . to generate initial Secrets then delete files
+    # files:
+    # - secrets/credentials.json
+  - name: argo-tunnel-cert
+    type: Opaque
+    # files:
+    # - secrets/cert.pem
+  - name: argo-tunnel-config
+    type: Opaque
+    # files:
+    # - secrets/config.yaml
 
-# secretGenerator:
-#   - name: argo-tunnel-credentials
-#     type: Opaque
-#     ## kustomize build . to generate initial Secrets then delete
-#     # files:
-#     # - secrets/credentials.json
-#   - name: argo-tunnel-cert
-#     type: Opaque
-#     # files:
-#     # - secrets/cert.pem
-#   - name: argo-tunnel-config
-#     type: Opaque
-#     # files:
-#     # - secrets/config.yml
+configurations:
+  - configurations/sealed-secret-config.yaml
 
-# generatorOptions:
-#   annotations:
-#     sealedsecrets.bitnami.com/managed: "true"
-#     sealedsecrets.bitnami.com/namespace-wide: "true"
-
-
+generatorOptions:
+  annotations:
+    sealedsecrets.bitnami.com/managed: "true"
+    sealedsecrets.bitnami.com/namespace-wide: "true"
