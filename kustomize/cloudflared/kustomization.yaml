@@ -30,6 +30,6 @@ configurations:
 generatorOptions:
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
-    # argocd.argoproj.io/sync-options: Replace=true
+    argocd.argoproj.io/sync-options: Prune=false
     sealedsecrets.bitnami.com/managed: "true"
     sealedsecrets.bitnami.com/namespace-wide: "true"
