@@ -1,6 +1,8 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
+buildMetadata: [originAnnotations]
+
 namespace: cicd
 
 resources:
@@ -12,7 +14,7 @@ resources:
 secretGenerator:
   - name: argo-tunnel-credentials
     type: Opaque
-    ## kustomize build . to generate initial Secrets then delete files
+    ## kustomize build . -o secrets to generate initial Secrets, kubeseal, then delete files
     # files:
     # - secrets/credentials.json
   - name: argo-tunnel-cert
