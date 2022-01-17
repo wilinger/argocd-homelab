@@ -5,24 +5,24 @@ namespace: cicd
 
 resources:
   - deployment.yaml
-  # - sealed-secrets/sealed-secret-credentials.yaml
-  # - sealed-secrets/sealed-secret-cert.yaml
-  # - sealed-secrets/sealed-secret-config.yaml
+  - sealed-secrets/sealed-secret-credentials.yaml
+  - sealed-secrets/sealed-secret-cert.yaml
+  - sealed-secrets/sealed-secret-config.yaml
 
 secretGenerator:
   - name: argo-tunnel-credentials
     type: Opaque
     ## kustomize build . -o secrets to generate initial Secrets, kubeseal, then delete files
-    files:
-    - secrets/credentials.json
+    # files:
+    # - secrets/credentials.json
   - name: argo-tunnel-cert
     type: Opaque
-    files:
-    - secrets/cert.pem
+    # files:
+    # - secrets/cert.pem
   - name: argo-tunnel-config
     type: Opaque
-    files:
-    - secrets/config.yaml
+    # files:
+    # - secrets/config.yaml
 
 configurations:
   - configurations/sealed-secret-config.yaml
