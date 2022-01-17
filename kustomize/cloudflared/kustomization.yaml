@@ -9,28 +9,28 @@ resources:
   - sealed-secrets/sealed-secret-cert.yaml
   - sealed-secrets/sealed-secret-config.yaml
 
-## https://github.com/argoproj/argo-cd/issues/1639
-secretGenerator:
-  - name: argo-tunnel-credentials
-    type: Opaque
-    ## kustomize build . -o secrets to generate initial Secrets, kubeseal, then delete files
-    # files:
-    # - secrets/credentials.json
-  - name: argo-tunnel-cert
-    type: Opaque
-    # files:
-    # - secrets/cert.pem
-  - name: argo-tunnel-config
-    type: Opaque
-    # files:
-    # - secrets/config.yaml
+## adding hash to does not work https://github.com/argoproj/argo-cd/issues/1639
+# secretGenerator:
+#   - name: argo-tunnel-credentials
+#     type: Opaque
+#     ## kustomize build . -o secrets to generate initial Secrets, kubeseal, then delete files
+#     # files:
+#     # - secrets/credentials.json
+#   - name: argo-tunnel-cert
+#     type: Opaque
+#     # files:
+#     # - secrets/cert.pem
+#   - name: argo-tunnel-config
+#     type: Opaque
+#     # files:
+#     # - secrets/config.yaml
 
-configurations:
-  - configurations/sealed-secret-config.yaml
+# configurations:
+#   - configurations/sealed-secret-config.yaml
 
-generatorOptions:
-  annotations:
-    argocd.argoproj.io/compare-options: IgnoreExtraneous
-    # argocd.argoproj.io/sync-options: Replace=true
-    sealedsecrets.bitnami.com/managed: "true"
-    sealedsecrets.bitnami.com/namespace-wide: "true"
+# generatorOptions:
+#   annotations:
+#     argocd.argoproj.io/compare-options: IgnoreExtraneous
+#     argocd.argoproj.io/sync-options: Replace=true
+#     sealedsecrets.bitnami.com/managed: "true"
+#     sealedsecrets.bitnami.com/namespace-wide: "true"
