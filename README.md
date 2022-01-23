@@ -19,6 +19,10 @@ Argo CD repository to deploy Kubernetes applications in my homelab with security
 * [harbor](http://harbor.io/)
 * [cloudflared](https://github.com/cloudflare/cloudflared)
 
+### Related Repositories
+* [ansible-homelab](https://github.com/wilinger/ansible-homelab)
+* [terraform-homelab](https://github.com/wilinger/terraform-homelab)
+
 ### To do write ups
 * Encrypting Secrets with Sealed Secrets
 * Encrypting Helm values with Helm Secrets and SOPS
@@ -26,3 +30,4 @@ Argo CD repository to deploy Kubernetes applications in my homelab with security
 * Secure tunnel and Zero-trust application access with cloudflared
 * OPA/Datree policy as code
 * Committing secrets prevention and detection
+
