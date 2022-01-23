@@ -25,3 +25,4 @@ Argo CD repository to deploy Kubernetes applications in my homelab with security
 * Harbor self hosted registry with container vulnerability scanning
 * Secure tunnel and Zero-trust application access with cloudflared
 * OPA/Datree policy as code
+* Committing secrets prevention and detection
