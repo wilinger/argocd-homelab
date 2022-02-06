@@ -7,21 +7,6 @@ resources:
 nameSuffix: -argocd
 namespace: cicd
 
-### working###
-# patches:
-# - path: deployment_autoscaler.yaml
-#   target:
-#     kind: HorizontalRunnerAutoscaler
-#     name: autoscaler
-#   options:
-#     allowNameChange: true
-# - path: deployment_runner.yaml
-#   target:
-#     kind: RunnerDeployment
-#     name: runner-deployment
-#   options:
-#     allowNameChange: true
-
 patches:
   - patch: |-
       apiVersion: actions.summerwind.dev/v1alpha1
