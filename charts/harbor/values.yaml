@@ -11,4 +11,3 @@ harbor:
   externalURL: https://harbor.zencluster.org
   trivy:
     enabled: true
-    
