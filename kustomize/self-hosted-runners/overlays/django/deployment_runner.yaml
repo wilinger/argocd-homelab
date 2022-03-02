@@ -1,0 +1,8 @@
+apiVersion: actions.summerwind.dev/v1alpha1
+kind: RunnerDeployment
+metadata:
+  name: runner-deployment
+spec:
+  template:
+    spec:
+      repository: wilinger/django-htmx-app-demo
