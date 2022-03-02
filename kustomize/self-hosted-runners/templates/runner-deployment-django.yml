@@ -10,7 +10,7 @@ spec:
     namespace: cicd
   project: default
   source:
-    path: kustomize/self-hosted-runners/overlays/ansible
+    path: kustomize/self-hosted-runners/overlays/django
     repoURL: https://github.com/wilinger/django-htmx-app-demo.git
     targetRevision: HEAD
   syncPolicy:
