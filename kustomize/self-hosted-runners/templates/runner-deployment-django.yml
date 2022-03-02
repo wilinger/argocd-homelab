@@ -11,7 +11,7 @@ spec:
   project: default
   source:
     path: kustomize/self-hosted-runners/overlays/django
-    repoURL: https://github.com/wilinger/django-htmx-app-demo.git
+    repoURL: https://github.com/wilinger/argocd-homelab.git
     targetRevision: HEAD
   syncPolicy:
     automated:
