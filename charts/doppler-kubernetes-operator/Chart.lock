@@ -1,0 +1,6 @@
+dependencies:
+- name: doppler-kubernetes-operator
+  repository: https://helm.doppler.com
+  version: 1.1.0
+digest: sha256:32c7be0286ff108738f328c49d43781bcf1065580a58e71bebdea7e6a47c364a
+generated: "2022-03-05T15:23:40.4929264-08:00"
