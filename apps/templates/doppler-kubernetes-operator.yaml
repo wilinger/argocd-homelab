@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: doppler-kubernetes-operator
+spec:
+  destination:
+    namespace: doppler-operator-system
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: charts/doppler-kubernetes-operator
+    repoURL: 'https://github.com/wilinger/argocd-homelab.git'
+    targetRevision: HEAD
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
