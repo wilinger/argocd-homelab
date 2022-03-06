@@ -27,7 +27,7 @@ spec:
                 name: django-secrets-stg
       containers:
         - name: django-htmx-app-demo
-          image: harbor.zencluster.org/wilinger/django-htmx-app-demo:1.0.3
+          image: harbor.zencluster.org/wilinger/django-htmx-app-demo:1.1.0
           imagePullPolicy: Always
           args:
             - ./docker-entrypoint.sh
