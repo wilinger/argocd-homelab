@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: django-htmx-app-demo
+spec:
+  destination:
+    namespace: django
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: kustomize/django-app
+    repoURL: 'https://github.com/wilinger/argocd-homelab.git'
+    targetRevision: HEAD
+  project: default 
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

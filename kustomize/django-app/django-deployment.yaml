@@ -1,0 +1,38 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: django-htmx-app-demo
+  namespace: django
+  labels:
+    app: django-htmx-app-demo
+spec:
+  selector:
+    matchLabels:
+      app: django-htmx-app-demo
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: django-htmx-app-demo
+    spec:
+      initContainers:
+        - name: check-pg-ready
+          image: postgres:14.2
+          command: ['sh', '-c', 
+            'until pg_isready -h pg-service -U $POSTGRES_USER -p 5432; 
+            do echo waiting for database; sleep 2; done;']
+          envFrom:
+            - secretRef:
+                name: django-secrets-stg
+      containers:
+        - name: django-htmx-app-demo
+          image: harbor.zencluster.org/wilinger/django-htmx-app-demo:1.0.3
+          imagePullPolicy: Always
+          args:
+            - ./docker-entrypoint.sh
+          envFrom:
+            - secretRef:
+                name: django-secrets-stg
+      imagePullSecrets:
+        - name: regcred

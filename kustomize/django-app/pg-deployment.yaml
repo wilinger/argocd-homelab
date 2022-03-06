@@ -1,0 +1,56 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: django
+  labels:
+    app: postgres
+  name: postgres
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      securityContext:
+        runAsUser: 999
+        runAsGroup: 999
+        fsGroup: 999
+      initContainers:
+        - name: chmod-er
+          image: busybox:latest
+          command: ["sh", "-c", "chown -R 999:999 /var/lib/postgresql/data"]
+          securityContext:
+            runAsUser: 0
+          volumeMounts:
+          - name: pg-data
+            mountPath: /var/lib/postgresql/data
+      containers:
+        - image: postgres:14.2
+          livenessProbe:
+            exec:
+              command:
+                - pg_isready -q -d $POSTGRES_DB -U $POSTGRES_USER
+            failureThreshold: 5
+            periodSeconds: 10
+            timeoutSeconds: 45
+          name: postgres
+          ports:
+            - containerPort: 5432
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: pg-data
+          envFrom:
+            - secretRef:
+                name: django-secrets-stg
+      restartPolicy: Always
+      volumes:
+        - name: pg-data
+          persistentVolumeClaim:
+            claimName: pg-data-pvc
