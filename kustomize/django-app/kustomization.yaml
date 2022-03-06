@@ -5,7 +5,7 @@ namespace: django
 
 resources:
   - sealed-secrets/sealed-secret-regcred.yaml
-  - sealed-secrets/sealed-secret-token.yaml
+  - sealed-secrets/sealed-doppler-secret-token.yaml
   - sealed-secrets/doppler-secret-stg.yaml
   - pg-data-pvc.yaml
   - pg-deployment.yaml
