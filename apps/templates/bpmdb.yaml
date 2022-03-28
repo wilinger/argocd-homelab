@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: bpmdb
+spec:
+  destination:
+    namespace: bpmdb
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: kustomize/bpmdb
+    repoURL: 'https://github.com/wilinger/argocd-homelab.git'
+    targetRevision: HEAD
+  project: default 
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
