@@ -1,0 +1,22 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  annotations:
+    sealedsecrets.bitnami.com/cluster-wide: "true"
+  creationTimestamp: null
+  name: bpmdb-doppler-token
+  namespace: doppler-operator-system
+spec:
+  encryptedData:
+    serviceToken: AgBrfsF4XQAry/2X2HpaH2dudTbzZM9MZYlj5BAhIjtOY+Yv25SZ47mmckr6f5Ub7xVubJj9xy0RPXWDpaTjstwcpwpRpodNYW0dCJcBluWDGLDfsCMxo/wGX53oHsz0UTVhgxmGakRHi3H29eTcCVGpu9nXxMy4Qk5R+D/EJJ5lMglVPTjoCmErfYAVg5rLQL+rngkDRgLJnE2efy70dZ0RZ7vfmzZkak+76HDhk6iQzi8um6/V2oOSCstD9wLhyP+JwQGkfonNnjU6AXgnCXX2XTDVaEM+VP2k4UNW3DXEjX83yquTYU0OjnBikrcWZIXFtSkrbN4nZUfznqEHF+2Ede4/6ywLeTE4+xIKfq0xBWriGTDlnAy3P984NgRRHJPQrqgxsZl9GNn+s495qwVVH0ApFXwKb9LPQmGRVCWtnV53kU+HlPjmOYus/USZqdlgeXMxpkzKZQQgPUxS/VM9nrs6LaLFcORXKOGIE+Yly3iMz5XEsv6yt2fCrdFcdOOdMPjOSaFimLZMox0GBSXJeJ8RT0NeW0rB7kQZ9m9xOzVBz7x0xiZsFTdAEdUi/IM7huy0oU+fWkj7rNKs8UYBzbqKSYQTuifAudIWGTqFxeq7ZHg7p3JwZhjaITt8IV8CfRW0AEQ0OEJ3rgabEaRf4fyvU7todVIU5ZfulY5BzpACAOBaZ4my/jCvBDALeiIw1oJy8DrcCO2y7ldUe6LE0ocPGrjvInVWAUu7meT8fWNoog1LLFhcTSdcgcMN/hxmlByqaw==
+  template:
+    data: null
+    metadata:
+      annotations:
+        argocd.argoproj.io/compare-options: IgnoreExtraneous
+        sealedsecrets.bitnami.com/managed: "true"
+        sealedsecrets.bitnami.com/cluster-wide: "true"
+      creationTimestamp: null
+      name: bpmdb-doppler-token
+      namespace: doppler-operator-system
+    type: Opaque
