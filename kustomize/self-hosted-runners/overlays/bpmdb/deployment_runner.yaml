@@ -6,4 +6,4 @@ metadata:
 spec:
   template:
     spec:
-      repository: wilinger/old_bpmdb
+      repository: wilinger/bpmdatabase
